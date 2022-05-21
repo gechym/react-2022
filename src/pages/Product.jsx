@@ -7,16 +7,19 @@ import { MyStoreContexNavigate } from '../context/Store';
 
 const Product = () => {
     let [products, setProducts] = useState([]);
-    let [limit] = useState(5);
+    let [limit] = useState(100);
 
     let ref = useRef(0);
 
     let { page, sort, refetching } = MyStoreContexNavigate(); // 1 aa
 
-    let { data, loading, error } = useQuery(`/products?limit=${limit}&page=${page}&sort=${sort}`, {
-        saveCache: true,
-        refetching,
-    }); // []
+    let { data, loading, error } = useQuery(
+        `/products?limit=${limit}&page=${page}&sort=${sort}`,
+        {
+            saveCache: true,
+            refetching,
+        },
+    ); // []
 
     const totalPage = useMemo(() => {
         if (data?.count) return Math.ceil(data.count / limit);

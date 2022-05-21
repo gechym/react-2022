@@ -5,6 +5,7 @@ import Modal from './Modal';
 import ProductsForm from './ProductsForm';
 import useMutation from '../hooks/useMutation';
 import { deleteProduct } from '../APi/ProductApi';
+import ImageLazyLoading from './ImageLazyLoading';
 
 const ProductCard = ({ product }) => {
     const [openProduct, setOpenProduct] = useState(false);
@@ -18,7 +19,7 @@ const ProductCard = ({ product }) => {
 
     return (
         <div className="card">
-            <img src={product.image} alt={product.image} />
+            <ImageLazyLoading url={product.image} />
 
             <div className="box">
                 <h3>
@@ -33,7 +34,10 @@ const ProductCard = ({ product }) => {
                     <button className="btn_edit" onClick={() => setOpenProduct(true)}>
                         Edit
                     </button>
-                    <button className="btn_delete" onClick={() => handleDelete(product._id)}>
+                    <button
+                        className="btn_delete"
+                        onClick={() => handleDelete(product._id)}
+                    >
                         Delete
                     </button>
                 </div>
