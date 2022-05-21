@@ -18,7 +18,8 @@ const useQuery = (url, opt) => {
     const { cache } = MyStoreContexNavigate();
 
     const clearCache = useCallback(() => {
-        if (Object.keys(cache.current).length >= option.sizeCache) return (cache.current = {});
+        if (Object.keys(cache.current).length >= option.sizeCache)
+            return (cache.current = {});
     }, [cache, option.sizeCache]);
 
     const fetchData = useCallback(
