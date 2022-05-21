@@ -16,9 +16,12 @@ const Search = () => {
     const [firtsLoad, setFirstLoad] = useState(false);
     const btnRef = useRef();
 
-    const { data, loading, error } = useQuery(`/products?search=${search}&sort=${sort}&limit=${limit}&page=${page}`, {
-        refetching,
-    });
+    const { data, loading, error } = useQuery(
+        `/products?search=${search}&sort=${sort}&limit=${limit}&page=${page}`,
+        {
+            refetching,
+        },
+    );
 
     useEffect(() => {
         if (data?.products) {
@@ -63,7 +66,12 @@ const Search = () => {
             <Products products={products} />
             {loading && <h2>Loading...</h2>}
             {error && <h2>{error}</h2>}
-            <button ref={btnRef} className="btn-load_more" onClick={handleLoadMore} disabled={stop}>
+            <button
+                ref={btnRef}
+                className="btn-load_more"
+                onClick={handleLoadMore}
+                disabled={stop}
+            >
                 Load more
             </button>
         </div>

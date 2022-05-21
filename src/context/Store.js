@@ -22,5 +22,9 @@ export const ContextProvider = ({ children }) => {
 
     Store.displayName = 'Cung cấp Page vs Sort';
 
-    return <Store.Provider value={{ page, sort, cache, refetching, setRefetching }}>{children}</Store.Provider>;
+    return (
+        <Store.Provider value={{ page, sort, cache, refetching, setRefetching }}>
+            {children}
+        </Store.Provider>
+    );
 };
