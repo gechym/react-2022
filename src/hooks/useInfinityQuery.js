@@ -27,7 +27,6 @@ function useInfinityQuery({ url, depens = [], otp }) {
         const btn = btnRef.current;
 
         const observer = new IntersectionObserver((entrins) => {
-            console.log(option);
             if (entrins[0].isIntersecting && option.firstLoad) {
                 handleLoadMore();
             }

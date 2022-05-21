@@ -5,7 +5,7 @@ import useMutation from '../hooks/useMutation';
 const ProductsForm = ({ btnTxt, data }) => {
     const mutilRef = useRef();
 
-    const { mutate, loading } = useMutation();
+    const { mutate, loading, error } = useMutation();
 
     const onHanleSupmit = (e) => {
         e.preventDefault();
@@ -42,7 +42,13 @@ const ProductsForm = ({ btnTxt, data }) => {
     return (
         <div className="product_form">
             <form ref={mutilRef} onSubmit={onHanleSupmit}>
-                <input type="text" name="title" placeholder="Product title" required defaultValue={data?.title} />
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Product title"
+                    required
+                    defaultValue={data?.title}
+                />
 
                 <input
                     type="text"
@@ -52,7 +58,13 @@ const ProductsForm = ({ btnTxt, data }) => {
                     defaultValue={data?.description}
                 />
 
-                <input type="text" name="price" placeholder="Product price" required defaultValue={data?.price} />
+                <input
+                    type="text"
+                    name="price"
+                    placeholder="Product price"
+                    required
+                    defaultValue={data?.price}
+                />
 
                 <input
                     type="text"
@@ -62,9 +74,16 @@ const ProductsForm = ({ btnTxt, data }) => {
                     defaultValue={data?.category}
                 />
 
-                <input type="text" name="image" placeholder="Product image" required defaultValue={data?.image} />
+                <input
+                    type="text"
+                    name="image"
+                    placeholder="Product image"
+                    required
+                    defaultValue={data?.image}
+                />
 
                 <button disabled={loading}>{loading ? 'Loading..' : btnTxt}</button>
+                <h4>{error}</h4>
             </form>
         </div>
     );

@@ -28,9 +28,12 @@ const Search = () => {
 
     useEffect(() => {
         if (data?.products) {
+            setStop(false);
             setFirstLoad(true);
             setProducts((prev) => [...prev, ...data.products]);
             if (data.products.length < limit) setStop(true);
+        } else {
+            setStop(true);
         }
     }, [data?.products, limit]);
 

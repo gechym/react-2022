@@ -18,9 +18,13 @@ function useMutation() {
                 toast.success('Success!');
             })
             .catch((err) => {
-                setError(err.response.data.msg);
-                toast.error(err.response.data.msg);
+                setError(`${err}`);
+                toast.error(`Lỗi ${err}`);
                 setLoading(false);
+
+                setTimeout(() => {
+                    setError('');
+                }, 4000);
             })
             .finally(() => setLoading(false));
     };
